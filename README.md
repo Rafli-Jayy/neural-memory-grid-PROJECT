@@ -1,16 +1,36 @@
-# React + Vite
+# 🧠 NEURAL MEMORY GRID — Cyberpunk Arcade Matcher
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-black?style=for-the-badge&logo=framer-motion&logoColor=F024B6)](https://www.framer.com/motion/)
 
-Currently, two official plugins are available:
+A high-intensity, ultra-glow sci-fi memory card matching game. Built with React and powered by Vite, featuring custom deck archetypes and smooth cybernetic transitions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ⚡ Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* 🔮 **Ultra-Glow Cyber Arena:** Immersive interface with neon ambient lights, dynamic radar background grid, and pulsating nebula glow effects.
+* 🎭 **Deck Archetypes Selector:** 5 pre-loaded emoji themes (Cyber Hack, Retro Gaming, Spooky Night, Expressions, and Snack Break).
+* 📱 **Responsive Grid System:** Pixel-perfect adaptive layout ensuring zero overlap from mobile screens to 4K monitors.
+* 🎬 **Fluid Animations:** Powered by Framer Motion for stagger delays and reactive card states.
 
-## Expanding the Oxlint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## 🗺️ Project Structure
+
+```text
+MemoryApp/
+├── src/
+│   ├── components/
+│   │   ├── GameArena/        # Game core view panels
+│   │   └── Home/             # Landing page sub-components
+│   │       ├── ThemeSelector.jsx  # Adaptive grid deck picker
+│   │       └── ModeCard.jsx       # Staggered game mode cards
+│   ├── data/
+│   │   ├── gameModes.js      # Difficulty levels configuration
+│   │   └── themes.jsx        # Core emoji deck datasets
+│   └── pages/
+│       ├── LandingPage.jsx   # Main entry hub
+│       └── GameArena.jsx     # Active game playground
