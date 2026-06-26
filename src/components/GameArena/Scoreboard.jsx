@@ -3,7 +3,7 @@ import { FaArrowLeft, FaClock, FaHeart, FaTrophy, FaVolumeUp, FaRedo } from 'rea
 
 export default function Scoreboard() {
   return (
-    <header className="w-full max-w-6xl bg-gradient-to-r from-slate-950/20 via-slate-900/10 to-slate-950/20 border border-slate-800/30 p-3 md:p-4 rounded-2xl backdrop-blur-xl shadow-2xl flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 relative z-10">
+    <header className="w-full max-w-6xl bg-linear-to-r from-slate-950/20 via-slate-900/10 to-slate-950/20 border border-slate-800/30 p-3 md:p-4 rounded-2xl backdrop-blur-xl shadow-2xl flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 relative z-10">
       
       {/* 🧭 BLOK 1: NAVIGATION & IDENTIFIER (Kiri) */}
       <div className="w-full sm:w-auto flex items-center justify-between sm:justify-start gap-4">
@@ -18,10 +18,10 @@ export default function Scoreboard() {
       </div>
 
       {/* 📊 BLOK 2: DATA INDICATORS (Tengah - Super Responsive Grid di Mobile) */}
-      <div className="w-full sm:w-auto grid grid-cols-3 gap-2 font-mono flex-grow max-w-md sm:px-4">
+      <div className="w-full sm:w-auto grid grid-cols-3 gap-2 font-mono grow max-w-md sm:px-4">
         {/* Timer Indikator */}
         <div className="bg-slate-950/50 border border-slate-800/40 px-3 py-2 rounded-xl flex flex-col items-center justify-center relative overflow-hidden group hover:border-amber-500/20 transition-colors">
-          <div className="absolute top-0 inset-x-0 h-[2px] bg-amber-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="absolute top-0 inset-x-0 h-0.5 bg-amber-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
           <div className="flex items-center gap-1.5 mb-0.5">
             <FaClock className="text-amber-400 text-[10px]" />
             <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">Time</span>
@@ -31,7 +31,7 @@ export default function Scoreboard() {
 
         {/* Lives Indikator */}
         <div className="bg-slate-950/50 border border-slate-800/40 px-3 py-2 rounded-xl flex flex-col items-center justify-center relative overflow-hidden group hover:border-rose-500/20 transition-colors">
-          <div className="absolute top-0 inset-x-0 h-[2px] bg-rose-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="absolute top-0 inset-x-0 h-0.5 bg-rose-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
           <div className="flex items-center gap-1.5 mb-0.5">
             <FaHeart className="text-rose-500 text-[10px] animate-pulse" />
             <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">Lives</span>
@@ -41,7 +41,7 @@ export default function Scoreboard() {
 
         {/* Score Indikator */}
         <div className="bg-slate-950/50 border border-slate-800/40 px-3 py-2 rounded-xl flex flex-col items-center justify-center relative overflow-hidden group hover:border-cyan-500/20 transition-colors">
-          <div className="absolute top-0 inset-x-0 h-[2px] bg-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="absolute top-0 inset-x-0 h-0.5 bg-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
           <div className="flex items-center gap-1.5 mb-0.5">
             <FaTrophy className="text-cyan-400 text-[10px]" />
             <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">Score</span>

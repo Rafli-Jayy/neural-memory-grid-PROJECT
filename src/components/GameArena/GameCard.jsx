@@ -17,12 +17,12 @@ export default function GameCard({ emoji, cardWidthClass }) {
       transition={{ type: "spring", stiffness: 400, damping: 15 }}
       
       // 🚀 KUNCI FIX UTAMA: Ditambahkan class 'touch-manipulation' & 'active:opacity-80'
-      className={`aspect-square cursor-pointer rounded-xl border flex items-center justify-center overflow-hidden p-[1px] will-change-transform touch-manipulation active:opacity-80 ${cardWidthClass}
-        bg-gradient-to-b from-slate-900/90 to-slate-950/90 border-slate-800/60
+      className={`aspect-square cursor-pointer rounded-xl border flex items-center justify-center overflow-hidden p-px will-change-transform touch-manipulation active:opacity-80 ${cardWidthClass}
+        bg-linear-to-b from-slate-900/90 to-slate-950/90 border-slate-800/60
         md:hover:border-indigo-500/80 md:hover:shadow-[0_4px_20px_rgba(99,102,241,0.2)]`}
     >
       <div className="w-full h-full rounded-[10px] bg-slate-950/30 flex items-center justify-center relative group pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/[0.03] to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-b from-indigo-500/3 to-transparent" />
         
         {/* Emoji - dikunci select-none agar aman */}
         <span className="text-base sm:text-lg md:text-2xl lg:text-3xl drop-shadow-md select-none">
