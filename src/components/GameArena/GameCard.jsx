@@ -1,17 +1,37 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function GameCard({ emoji, cardWidthClass }) {
+  // Pagar pembatas deteksi desktop
+  const isDesktop = typeof window !== 'undefined' && window.innerWidth > 768;
+
   return (
-    <div className={`aspect-square cursor-pointer rounded-xl border border-slate-800/60 bg-gradient-to-b from-slate-900/90 to-slate-950/90 flex items-center justify-center overflow-hidden transition-all duration-300 hover:border-indigo-500/80 hover:scale-105 hover:shadow-[0_4px_20px_rgba(99,102,241,0.2)] active:scale-95 p-[1px] ${cardWidthClass}`}>
-      <div className="w-full h-full rounded-[10px] bg-slate-950/30 flex items-center justify-center relative group">
-        <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/[0.03] to-transparent pointer-events-none" />
+    <motion.div
+      // 🕹️ Hanya aktifkan hover scale di PC
+      whileHover={isDesktop ? { scale: 1.05 } : {}}
+      
+      // 📱 Di HP, pas kartu emoji ditekan jari, dia harus membal mengecil
+      whileTap={{ scale: 0.92 }} // Gua naikin intensitas mengecilnya jadi 0.92 biar makin kelihatan di HP
+      
+      // Menggunakan jenis transisi spring biar efek membalnya instan dan responsif
+      transition={{ type: "spring", stiffness: 400, damping: 15 }}
+      
+      // 🚀 KUNCI FIX UTAMA: Ditambahkan class 'touch-manipulation' & 'active:opacity-80'
+      className={`aspect-square cursor-pointer rounded-xl border flex items-center justify-center overflow-hidden p-[1px] will-change-transform touch-manipulation active:opacity-80 ${cardWidthClass}
+        bg-gradient-to-b from-slate-900/90 to-slate-950/90 border-slate-800/60
+        md:hover:border-indigo-500/80 md:hover:shadow-[0_4px_20px_rgba(99,102,241,0.2)]`}
+    >
+      <div className="w-full h-full rounded-[10px] bg-slate-950/30 flex items-center justify-center relative group pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/[0.03] to-transparent" />
         
+        {/* Emoji - dikunci select-none agar aman */}
         <span className="text-base sm:text-lg md:text-2xl lg:text-3xl drop-shadow-md select-none">
           {emoji}
         </span>
 
-        <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-slate-800/60 group-hover:bg-indigo-500/60 transition-colors" />
+        {/* Garis neon pemanis di bawah kartu */}
+        <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-slate-800/60 md:group-hover:bg-indigo-500/60 transition-colors" />
       </div>
-    </div>
+    </motion.div>
   );
 }

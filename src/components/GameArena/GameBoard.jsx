@@ -3,6 +3,7 @@ import GameCard from './GameCard';
 
 export default function GameBoard({ cards }) {
   const total = cards.length;
+  // Penentuan lebar grid adaptif anti-jelek lu tetap aman
   const cardWidthClass = total > 24 ? "w-[14%] sm:w-[15%] md:w-[7.5%]" : "w-[22%] sm:w-[21%] md:w-[11%]";
 
   return (

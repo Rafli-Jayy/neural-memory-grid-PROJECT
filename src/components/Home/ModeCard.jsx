@@ -6,22 +6,31 @@ export default function ModeCard({ mode, variants }) {
   return (
     <motion.div
       variants={variants}
-      whileHover={{ y: -6, transition: { duration: 0.2 } }}
-      className={`bg-gradient-to-br ${mode.cardBg} border p-6 rounded-2xl backdrop-blur-xl flex flex-col justify-between shadow-2xl group transition-colors duration-300`}
+      // 🚀 Hanya aktifkan hover mengangkat kartu di layar desktop biar scroll HP gak seret
+      whileHover={window.innerWidth > 768 ? { y: -6 } : {}}
+      whileTap={{ scale: 0.97 }}
+      transition={{ type: "tween", ease: "easeOut", duration: 0.2 }}
+      // 🛠️ DI HP PAKAI BG SOLID (bg-slate-900), DI DESKTOP BARU TRANSPARAN BLUR (md:backdrop-blur-xl)
+      className={`will-change-transform border p-6 rounded-2xl flex flex-col justify-between group transition-colors duration-300 ${mode.cardBg}
+        bg-slate-900 md:bg-slate-950/40 md:backdrop-blur-xl shadow-xl md:shadow-2xl`}
     >
       <div>
         {/* Top: Icon & Difficulty Badge */}
         <div className="flex justify-between items-start mb-5">
-          <div className="p-3.5 bg-slate-950/80 rounded-xl border border-slate-800 shadow-inner group-hover:scale-110 transition-transform duration-300">
+          <motion.div 
+            variants={window.innerWidth > 768 ? { hover: { scale: 1.1 } } : {}}
+            transition={{ duration: 0.2 }}
+            className="will-change-transform p-3.5 bg-slate-950/80 rounded-xl border border-slate-800 shadow-inner"
+          >
             {mode.icon}
-          </div>
-          <span className={`text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md border ${mode.diffColor}`}>
+          </motion.div>
+          <span className={`will-change-transform text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md border ${mode.diffColor}`}>
             {mode.difficulty}
           </span>
         </div>
 
-        {/* Title */}
-        <h3 className="text-xl font-bold tracking-wide group-hover:text-indigo-400 transition-colors duration-200 mb-4">
+        {/* Title (group-hover warna teks hanya aktif di desktop md:) */}
+        <h3 className="text-xl font-bold tracking-wide md:group-hover:text-indigo-400 transition-colors duration-200 mb-4">
           {mode.title}
         </h3>
 
@@ -42,7 +51,7 @@ export default function ModeCard({ mode, variants }) {
           <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Gameplay Flow:</p>
           {mode.gameplay.map((rule, idx) => (
             <div key={idx} className="flex items-start gap-2 text-xs text-slate-300 leading-relaxed">
-              <span className="w-1 h-1 bg-indigo-400 rounded-full mt-2 shrink-0 shadow-glow" />
+              <span className="w-1 h-1 bg-indigo-400 rounded-full mt-2 shrink-0" />
               <span>{rule}</span>
             </div>
           ))}
@@ -54,9 +63,20 @@ export default function ModeCard({ mode, variants }) {
         <span className="text-[11px] font-medium text-slate-400 italic bg-slate-950/30 p-2 rounded-lg text-center">
           {mode.footer}
         </span>
-        <button className="w-full py-2.5 bg-slate-900 hover:bg-indigo-600 border border-slate-800 hover:border-transparent text-slate-300 hover:text-white font-bold rounded-xl text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-lg group-hover:shadow-indigo-500/10">
+        
+        {/* 📱 Versi anti-nyangkut: whileTap dikunci khusus layar HP (<= 768px) */}
+        <motion.button 
+          whileTap={
+            window.innerWidth <= 768 
+              ? { backgroundColor: "#4f46e5", color: "#ffffff" } 
+              : {}
+          }
+          transition={{ duration: 0.1 }}
+          className="w-full py-2.5 bg-slate-900 border border-slate-800 text-slate-300 font-bold rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-200
+            md:hover:bg-indigo-600 md:hover:border-transparent md:hover:text-white md:active:scale-95 md:group-hover:shadow-lg md:group-hover:shadow-indigo-500/10"
+        >
           Play Mode <FaArrowRight className="text-[10px]" />
-        </button>
+        </motion.button>
       </div>
     </motion.div>
   );
