@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaHourglassHalf, FaHeart, FaArrowRight } from 'react-icons/fa';
 
-// ✅ Di luar komponen
+
+const MotionLink = motion(Link);
+
 const ICON_HOVER_VARIANTS = {
   hover: { scale: 1.1, transition: { duration: 0.2 } },
 };
 
 const TWEEN_FAST = { type: 'tween', ease: 'easeOut', duration: 0.2 };
 
-// ✅ Hook kecil — reaktif terhadap resize, aman di SSR
+
 function useIsDesktop() {
   const [isDesktop, setIsDesktop] = useState(() =>
     typeof window !== 'undefined' ? window.innerWidth > 768 : false
@@ -91,15 +94,20 @@ export default function ModeCard({ mode, variants }) {
           {mode.footer}
         </span>
 
-        <motion.button
-          // ✅ opacity, bukan backgroundColor — GPU only, tidak repaint
-          whileTap={!isDesktop ? { opacity: 0.7 } : undefined}
-          transition={{ duration: 0.1 }}
-          className="w-full py-2.5 bg-slate-900 border border-slate-800 text-slate-300 font-bold rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-200
-            md:hover:bg-indigo-600 md:hover:border-transparent md:hover:text-white md:active:scale-95 md:group-hover:shadow-lg md:group-hover:shadow-indigo-500/10"
-        >
-          Play Mode <FaArrowRight className="text-[10px]" />
-        </motion.button>
+        <Link 
+          to={`/gamearena/${mode.id}`} 
+          className="w-full" 
+          state={{ fromLanding: true }}> 
+          
+          <motion.button
+            whileTap={!isDesktop ? { opacity: 0.7 } : undefined}
+            transition={{ duration: 0.1 }}
+            className="w-full py-2.5 bg-slate-900 border border-slate-800 text-slate-300 font-bold rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-200
+              md:hover:bg-indigo-600 md:hover:border-transparent md:hover:text-white md:active:scale-95 md:group-hover:shadow-lg md:group-hover:shadow-indigo-500/10"
+          >
+            Play Mode <FaArrowRight className="text-[10px]" />
+          </motion.button>
+        </Link>
       </div>
     </motion.div>
   );

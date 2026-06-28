@@ -7,7 +7,7 @@ export default function Navbar() {
 
   return (
     <header className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center relative z-10">
-      <div className="flex items-center gap-2 font-black text-2xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
+      <div className="flex items-center gap-2 font-black text-2xl tracking-wider text-transparent bg-clip-text bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400">
         <FaGamepad className="text-indigo-400 text-3xl animate-spin-slow" /> MEMO GAME
       </div>
       <div className="flex items-center gap-4">

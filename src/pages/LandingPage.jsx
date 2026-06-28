@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 import Navbar from '../components/Home/Navbar';
@@ -8,9 +8,14 @@ import ModeCard from '../components/Home/ModeCard';
 import Footer from '../components/Home/Footer';
 
 import { gameModes } from '../data/gameModes';
+import useStart from '../hooks/useStart'
 
 export default function LandingPage() {
-  const [selectedTheme, setSelectedTheme] = useState('cyber-cyber');
+
+  const {
+    theme,
+    onThemeChange
+  } = useStart();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -38,8 +43,8 @@ export default function LandingPage() {
       {/* 3. THEME SELECTOR SECTION */}
       <main className="max-w-7xl mx-auto px-6 relative z-10">
         <ThemeSelector 
-          selectedTheme={selectedTheme} 
-          onThemeChange={setSelectedTheme} 
+          selectedTheme={theme} 
+          onThemeChange={onThemeChange} 
         />
 
         {/* Title Section pemanis */}

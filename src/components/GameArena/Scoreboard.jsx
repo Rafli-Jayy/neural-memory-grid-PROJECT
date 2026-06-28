@@ -1,7 +1,11 @@
 import React from 'react';
 import { FaArrowLeft, FaClock, FaHeart, FaTrophy, FaVolumeUp, FaRedo } from 'react-icons/fa';
+import { useParams, Navigate } from 'react-router-dom';
+import { gameModes } from '../../data/gameModes'
 
-export default function Scoreboard() {
+export default function Scoreboard({activeMode}) {
+
+
   return (
     <header className="w-full max-w-6xl bg-linear-to-r from-slate-950/20 via-slate-900/10 to-slate-950/20 border border-slate-800/30 p-3 md:p-4 rounded-2xl backdrop-blur-xl shadow-2xl flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 relative z-10">
       
@@ -13,7 +17,9 @@ export default function Scoreboard() {
         </button>
         <div className="text-right sm:text-left">
           <span className="text-[9px] font-black text-indigo-500/80 uppercase tracking-widest block leading-none mb-1">Neural Net</span>
-          <h1 className="text-xs md:text-sm font-black text-slate-200 uppercase tracking-wide">Memory Matrix</h1>
+          <h1 className="text-xs md:text-sm font-black text-slate-200 uppercase tracking-wide">
+            {activeMode.id}
+          </h1>
         </div>
       </div>
 

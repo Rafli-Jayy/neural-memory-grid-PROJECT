@@ -1,27 +1,33 @@
-import { Route, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import LandingPage from './pages/LandingPage'
-import NotFound from './pages/NotFound'
-import GameArena from './pages/GameArena'
+import LandingPage from './pages/LandingPage';
+import GameArena from './pages/GameArena';
+import NotFound from './pages/NotFound';
+import ErrorPage from './pages/ErrorPage';
+
+import { gameModes } from "./data/gameModes";
 
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <LandingPage />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "/gamearena/:gameMode",
+    element: <GameArena/>,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
+]);
 
 function App() {
 
-  return (
-
-    <Routes>
-
-      <Route path="/" element={<LandingPage />}/>
-      <Route path="/gamearena" element={<GameArena />}/>
-      <Route path="*" element={<NotFound />}/>
-
-    </Routes>
-
-  )
-
+  return <RouterProvider router={router} />;
 }
 
-
-
-export default App
+export default App;

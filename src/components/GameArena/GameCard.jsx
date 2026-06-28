@@ -7,16 +7,6 @@ export default function GameCard({ emoji, cardWidthClass }) {
 
   return (
     <motion.div
-      // 🕹️ Hanya aktifkan hover scale di PC
-      whileHover={isDesktop ? { scale: 1.05 } : {}}
-      
-      // 📱 Di HP, pas kartu emoji ditekan jari, dia harus membal mengecil
-      whileTap={{ scale: 0.92 }} // Gua naikin intensitas mengecilnya jadi 0.92 biar makin kelihatan di HP
-      
-      // Menggunakan jenis transisi spring biar efek membalnya instan dan responsif
-      transition={{ type: "spring", stiffness: 400, damping: 15 }}
-      
-      // 🚀 KUNCI FIX UTAMA: Ditambahkan class 'touch-manipulation' & 'active:opacity-80'
       className={`aspect-square cursor-pointer rounded-xl border flex items-center justify-center overflow-hidden p-px will-change-transform touch-manipulation active:opacity-80 ${cardWidthClass}
         bg-linear-to-b from-slate-900/90 to-slate-950/90 border-slate-800/60
         md:hover:border-indigo-500/80 md:hover:shadow-[0_4px_20px_rgba(99,102,241,0.2)]`}
